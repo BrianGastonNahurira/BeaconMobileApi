@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const { register_admin } = require('../controllers/admin')
+const { 
+    register_admin, 
+    admin_login 
+} = require('../controllers/admin')
 const { 
     add_hostel, 
     pending_hostel, 
@@ -11,8 +14,11 @@ const {
 } = require('../controllers/hostel')
 const {register_user} = require('../controllers/user')
 
-//login routes
+//admin  routes
 const registeradmin = router.post('/newadmin',register_admin)
+const loginadmin = router.post('/loginadmin',admin_login)
+
+
 const registeruser = router.post('/newuser', register_user)
 
 
@@ -35,7 +41,8 @@ module.exports = {
     edithostel,
     confirmedhostel,
     singlehostel,
-    deletehostel
+    deletehostel,
+    loginadmin,
 }
 
 

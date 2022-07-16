@@ -14,32 +14,27 @@ const id = (schema) => {
 const newHostelSchema = new mongoose.Schema({
   hostel_name: {
     type: String,
-    required: true,
   },
   room_type: {
     type: String,
   },
   available_rooms: {
-    type: String,
-    required: true,
+    type: Number,
   },
   hostel_fee: {
     type: Number,
-    required: true,
   },
   hostel_account_no: {
     type: Number,
   },
   telphone_number: {
     type: Number,
-    required: true,
   },
   hostel_distance: {
     type: String,
   },
   hostel_description: {
     type: String,
-    required: true,
   },
   hostel_rules: {
     type: String,
@@ -69,17 +64,21 @@ const registerUserSchema = new mongoose.Schema({
   phone_number: {
     type: Number,
   },
-  university_email: {
-    type: String,
-  },
-  department: {
-    type: String,
-  },
   password: {
+    type: String,
+  },
+  email: {
     type: String,
   },
   confirm_password: {
     type: String,
+    required: [true, "Please confirm your password"],
+    validate: {
+      // this only works on CREATE and  SAVE!!!!
+      validator: function (el) {
+        return el === this.password;
+      },
+    },
   },
   register_date: {
     type: Date,

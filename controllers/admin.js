@@ -1,5 +1,5 @@
 // const router = require("express").Router();
-const { Admin } = require("../models/task");
+const { Admin } = require("../models/model");
 
 //the brain for registering an admin
 const register_admin = async (req, res) => {
